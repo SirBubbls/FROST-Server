@@ -27,6 +27,12 @@ spec:
         app: {{ include "frost-server.name" . }}
         component: {{ $tier }}
     spec:
+      volumes:
+        {{- range .Values.frost.http.extraSecretMounts }}
+        - name: {{ .name }}
+          secret:
+            secretName: {{ .secret }}
+        {{- end }}
       containers:
         - name: {{ $fullName }}
           image: "{{ .Values.frost.http.image.registry }}/{{ .Values.frost.http.image.repository }}:{{ .Values.frost.http.image.tag }}"
@@ -34,6 +40,11 @@ spec:
           ports:
             - name: tomcat
               containerPort: 8080
+          volumeMounts:
+          {{- range .Values.frost.http.extraSecretMounts }}
+            - name: {{ .name }}
+              mountPath: {{ .mountPath }}
+          {{- end }}
           resources:
           {{- toYaml .Values.frost.http.resources | nindent 12 }}
           env:

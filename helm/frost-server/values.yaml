@@ -112,6 +112,7 @@ frost:
       pullPolicy: IfNotPresent
     # FROST-Server HTTP deployment settings
     replicas: 1
+    extraSecretMounts: []
     ports:
       http:
         nodePort:

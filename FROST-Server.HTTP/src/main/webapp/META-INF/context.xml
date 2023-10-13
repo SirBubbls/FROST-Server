@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Context path="/FROST-Server" sessionCookiePath="LUGGI">
+<Context path="/FROST-Server" sessionCookiePath="${tomcat_session_cookie_path}">
     <!--
         Configuration file for Tomcat.
         Usually Tomcat will copy this file to $CATALINA_BASE/conf/[enginename]/[hostname]/SensorThingsServer.xml

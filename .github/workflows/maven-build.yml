@@ -73,8 +73,8 @@ jobs:
         build-args: |
           ARTIFACT_FILE=${{ env.HTTP_ARTIFACT }}
         tags: |
-          fraunhoferiosb/frost-server-http:latest
-          fraunhoferiosb/frost-server-http:${{ env.DOCKER_TAG_MASTER }}
+          dettoman/frost-server-http:latest
+          dettoman/frost-server-http:${{ env.DOCKER_TAG_MASTER }}
 
 
     - name: Build and push - MQTTP - Master branch latest
@@ -87,10 +87,10 @@ jobs:
         build-args: |
           ARTIFACT_FILE=${{ env.MQTTP_ARTIFACT }}
         tags: |
-          fraunhoferiosb/frost-server-mqttp:latest
-          fraunhoferiosb/frost-server-mqttp:${{ env.DOCKER_TAG_MASTER }}
-          fraunhoferiosb/frost-server:latest
-          fraunhoferiosb/frost-server:${{ env.DOCKER_TAG_MASTER }}
+          dettoman/frost-server-mqttp:latest
+          dettoman/frost-server-mqttp:${{ env.DOCKER_TAG_MASTER }}
+          dettoman/frost-server:latest
+          dettoman/frost-server:${{ env.DOCKER_TAG_MASTER }}
 
 
     - name: Build and push - MQTT - Master branch latest
@@ -103,8 +103,8 @@ jobs:
         build-args: |
           ARTIFACT_FILE=${{ env.MQTT_ARTIFACT }}
         tags: |
-          fraunhoferiosb/frost-server-mqtt:latest
-          fraunhoferiosb/frost-server-mqtt:${{ env.DOCKER_TAG_MASTER }}
+          dettoman/frost-server-mqtt:latest
+          dettoman/frost-server-mqtt:${{ env.DOCKER_TAG_MASTER }}
 
 
 
@@ -119,7 +119,7 @@ jobs:
         build-args: |
           ARTIFACT_FILE=${{ env.HTTP_ARTIFACT }}
         tags: |
-          fraunhoferiosb/frost-server-http:${{ env.DOCKER_TAG_BRANCH }}
+          dettoman/frost-server-http:${{ env.DOCKER_TAG_BRANCH }}
 
 
     - name: Build and push - MQTTP - Develop branch latest
@@ -132,8 +132,8 @@ jobs:
         build-args: |
           ARTIFACT_FILE=${{ env.MQTTP_ARTIFACT }}
         tags: |
-          fraunhoferiosb/frost-server:${{ env.DOCKER_TAG_BRANCH }}
-          fraunhoferiosb/frost-server-mqttp:${{ env.DOCKER_TAG_BRANCH }}
+          dettoman/frost-server:${{ env.DOCKER_TAG_BRANCH }}
+          dettoman/frost-server-mqttp:${{ env.DOCKER_TAG_BRANCH }}
 
 
     - name: Build and push - MQTT - Develop branch latest
@@ -146,5 +146,5 @@ jobs:
         build-args: |
           ARTIFACT_FILE=${{ env.MQTT_ARTIFACT }}
         tags: |
-          fraunhoferiosb/frost-server-mqtt:${{ env.DOCKER_TAG_BRANCH }}
+          dettoman/frost-server-mqtt:${{ env.DOCKER_TAG_BRANCH }}
 

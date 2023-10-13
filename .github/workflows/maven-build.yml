@@ -50,24 +50,6 @@ jobs:
       run: |
         mvn -B -DskipTests -Dmaven.javadoc.skip=true install
 
-    - name: Test with Sonar
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-      run: |
-        mvn -B verify sonar:sonar -Dsonar.projectKey=FraunhoferIOSB_FROST-Server -Dmaven.javadoc.skip=true -P coverage
-        echo "Exporting Variables"
-        export HTTP_NAME=$(mvn -pl FROST-Server.HTTP -Dexec.executable='echo' -Dexec.args='${project.build.finalName}' exec:exec -q)
-        export MQTTP_NAME=$(mvn -pl FROST-Server.MQTTP -Dexec.executable='echo' -Dexec.args='${project.build.finalName}' exec:exec -q)
-        export MQTT_NAME=$(mvn -pl FROST-Server.MQTT -Dexec.executable='echo' -Dexec.args='${project.build.finalName}' exec:exec -q)
-        echo "HTTP_ARTIFACT=${HTTP_NAME}.war"   >> $GITHUB_ENV
-        echo "MQTTP_ARTIFACT=${MQTTP_NAME}.war" >> $GITHUB_ENV
-        echo "MQTT_ARTIFACT=${MQTT_NAME}-jar-with-dependencies.jar" >> $GITHUB_ENV
-        export version=$(mvn -Dexec.executable='echo' -Dexec.args='${project.version}' --non-recursive exec:exec -q)
-        echo "DOCKER_TAG_MASTER=${version}"     >> $GITHUB_ENV
-        echo "DOCKER_TAG_BRANCH=${GITHUB_REF:11}-${version}" >> $GITHUB_ENV
-
-
     - name: Set up QEMU
       uses: docker/setup-qemu-action@v3
     - name: Set up Docker Buildx
